@@ -9,6 +9,8 @@
 - [Soniss](https://sonniss.com/)- часто раздает очень классные паки со звуками до 160 гигов.
 - [Boom Library](https://www.boomlibrary.com/)- лучшее из того что есть по качеству.
 - [CCmixter](https://dig.ccmixter.org/)- очень внимательно смотреть на копирайт.
+- [John Leonard French](https://assetstore.unity.com/publishers/2478)- много бандлов со скидками.
+  
 
 **Средние:**
 - [freesound](freesound.org) - не всегда ясны вопросы с копирайтом и много мусора
