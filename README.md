@@ -4,40 +4,22 @@
 Ищу музыку и звуки и кладу все в одну папку.
 
 **Самые классные сервисы:**
-
-[Chostic](https://www.chosic.com/free-music/all/)- c этого начинаю поиски.
-
-[японские стоки](https://www.nash.jp/nml/) - платно, но никто почти не юзает.
-
-[Soniss](https://sonniss.com/)- часто раздает очень классные паки со звуками до 160 гигов.
-
-[Boom Library](https://www.boomlibrary.com/)- лучшее из того что есть по качеству.
-
-[CCmixter](https://dig.ccmixter.org/)- очень внимательно смотреть на копирайт.
-
+- [Chostic](https://www.chosic.com/free-music/all/)- c этого начинаю поиски.
+- [японские стоки](https://www.nash.jp/nml/) - платно, но никто почти не юзает.
+- [Soniss](https://sonniss.com/)- часто раздает очень классные паки со звуками до 160 гигов.
+- [Boom Library](https://www.boomlibrary.com/)- лучшее из того что есть по качеству.
+- [CCmixter](https://dig.ccmixter.org/)- очень внимательно смотреть на копирайт.
 
 **Средние:**
-
-[freesound](freesound.org) - не всегда ясны вопросы с копирайтом и много мусора
-
-[blipsound](https://blipsounds.com/community-library/ )- 35 Гб звуков от сообщества
-
-[Kenney](https://www.kenney.nl/assets/category:Audio?sort=update) - неплохо, но мало. Часто раздает все бесплатно.
-
-[Blue-Zone](https://www.bluezone-corporation.com/)- хорошее качество, но больше для серьезных проектов.
-
-[zapsplat](https://www.zapsplat.com/) - мало, но не затаскано.
-
+- [freesound](freesound.org) - не всегда ясны вопросы с копирайтом и много мусора
+- [blipsound](https://blipsounds.com/community-library/ )- 35 Гб звуков от сообщества
+- [Kenney](https://www.kenney.nl/assets/category:Audio?sort=update) - неплохо, но мало. Часто раздает все бесплатно.
+- [Blue-Zone](https://www.bluezone-corporation.com/)- хорошее качество, но больше для серьезных проектов.
+- [zapsplat](https://www.zapsplat.com/) - мало, но не затаскано.
 
 **Приступ отчаяния:**
-
-[Adobe Free SFX Library](https://www.adobe.com/products/audition/offers/AdobeAuditionDLCSFX.html) 10 гигов и все так себе.
-
-[99sounds](https://99sounds.org/)- сайт делал человек под героином.
-
-
-
-
+- [Adobe Free SFX Library](https://www.adobe.com/products/audition/offers/AdobeAuditionDLCSFX.html) 10 гигов и все так себе.
+- [99sounds](https://99sounds.org/)- сайт делал человек под героином.
 
 
 
@@ -47,8 +29,6 @@
 Какая проблема возникает с сотней скачанных файлов из разных источников? Они все имеют разные настройки и поэтому если включить их рядом  мозг будет сам пытаться нормализовать эти звуки и произойдет "ear fatigue" - звуковая усталость от игры. Поэтому для удобства привожу звуки к одному виду, тогда музыка будет перетекать плавно из трека в трек, а смешивать эффекты становится удобнее.
 
 ![Screenshot](1.png)
-
-
 ##### Начинаю с нормализации всех файлов.  
 
 Нормализации существует два типа : 
@@ -85,8 +65,6 @@
 
 Чем больше разница между громкостью на отдельных участках трека тем выше **Loudness Range**. 
 ![Screenshot](2.png)
-
-
 Стандарты которые есть в играх:
 - GTA IV: 18.3 LU
 - The Walking Dead: 17.8 LU
@@ -119,8 +97,6 @@
 В эти папки кладет в зависимости от того насколько качественный он должен быть на выходе. В папку 1,я кладу музыку, а в последнюю папку кладу самый ненужный звук в игре.
 
 ![Screenshot](3.png)
-
-
 Теперь создаю батник, который в один клик преобразует файлы и запишет их всех в папку Finals:
 
 ``` powershell
@@ -138,28 +114,22 @@ set FINAL=Final
 
 
 for %%f in (%TIER_1%\*.*) do (
-    ffmpeg -i "%%f" -c:a libvorbis -ab 128k -ar 44100 "%FINAL%\%%~nf.ogg"
-)
+    ffmpeg -i "%%f" -c:a libvorbis -q:a 10 -ar 44100 "%FINAL%\%%~nf.ogg")
 
 for %%f in (%TIER_2%\*.*) do (
-    ffmpeg -i "%%f" -c:a libvorbis -ab 128k -ar 32100 "%FINAL%\%%~nf.ogg"
-)
+    ffmpeg -i "%%f" -c:a libvorbis -q:a 7 -ar 32100 "%FINAL%\%%~nf.ogg")
 
 
 for %%f in (%TIER_3%\*.*) do (
-    ffmpeg -i "%%f" -c:a libvorbis -ab 112k -ar 32100 "%FINAL%\%%~nf.ogg"
-)
+    ffmpeg -i "%%f" -c:a libvorbis -q:a 5 -ar 32100 "%FINAL%\%%~nf.ogg")
 
 
 for %%f in (%TIER_4%\*.*) do (
-    ffmpeg -i "%%f" -c:a libvorbis -ab 96k -ar 22050 "%FINAL%\%%~nf.ogg"
-
-)
+    ffmpeg -i "%%f" -c:a libvorbis -q:a 5 -ar 22050 "%FINAL%\%%~nf.ogg")
 
 
 for %%f in (%TIER_5%\*.*) do (
-    ffmpeg -i "%%f" -ac 1 -c:a libvorbis -ab 64k -ar 16000 "%FINAL%\%%~nf.ogg" 
-)
+    ffmpeg -i "%%f" -ac 1 -c:a libvorbis -q:a 3 -ar 16000 "%FINAL%\%%~nf.ogg")
 
 echo done.
 pause
@@ -170,6 +140,58 @@ pause
 
 В итоге у меня есть пять папок с оригинальными нормализованными звуковыми файлами большого размера и любого разрешения и папка Finals, где будут файлы оптимизированные для веба или мобил или любой другой платформы.
 
+
+
+## Что мне вообще подходит?
+
+Каждый случай обычно индивидуален, поэтому в некоторых случаях музыкальные треки я пережимаю вручную. Для этого я написал специальных батник, который создает 200 вариантов трека со всеми возможными комбинациями битрейта/частоты и количества каналов. Потом среди них я ищу вариант оптимальный в плане жертвы качеством в угоду весу.
+
+Батник берет все файлы из папки Music_test и записывает все варианты в папку Final
+
+``` powershell
+@echo off
+setlocal enabledelayedexpansion
+
+set SOURCE_FOLDER=Music_test
+set OUTPUT_FOLDER=Final
+set ERROR_LOG=error_log.txt
+
+if not exist "%OUTPUT_FOLDER%" mkdir "%OUTPUT_FOLDER%"
+
+set QUALITIES=1 2 3 4 5 6 7 8 9 10
+set SAMPLE_RATES=8000 11025 16000 22050 32000 44100 48000 88200 96000
+set CHANNELS=1 2
+
+for %%f in ("%SOURCE_FOLDER%\*.*") do (
+    for %%q in (%QUALITIES%) do (
+        for %%s in (%SAMPLE_RATES%) do (
+            for %%c in (%CHANNELS%) do (
+                echo converting %%~nxf with bitrate %%q, sample rate %%s and %%c channels
+                ffmpeg -i "%%f" -ac %%c -c:a libvorbis -q:a %%q -ar %%s "%OUTPUT_FOLDER%\%%~nf_q%%q_s%%s_c%%cch.ogg" 
+            )
+        )
+    )
+)
+
+echo done
+pause
+
+```
+
+#### Таблица на которую я ориентируюсь если важен размер. 
+
+Минутный казуальный трек по моему личному опыту дает примерно такой график корреляций.
+
+![Screenshot](4.png)
+
+Если я хочу получить файл в 1МБ я могу использовать качество битрейта 1 (64 kbit/s) и любую частоту или качество битрейта 10 (500 kbit/s) и частоту только 11025 Hz. Для казуального веба я обычно использую промежуток между 4-6 и частоту от 22050 Hz.
+
+Если брать коэффициент корреляции Пирсона, то на тех файлах что я тестил выходит:
+- Частота - размер: 0,47
+- Моно/Стерео - размер:  0,3460
+- Битрейт - размер: 0,136
+
+Это значит что частота влияет сильнее всего на конечный размер файла, но лучше всего все равно отбирать отслушав все вручную.
 
 
 
@@ -184,5 +206,6 @@ https://blog.audiokinetic.com/en/loudness-processing-best-practice-chapter-3-sca
 https://designingsound.org/2013/02/20/different-loudness-ranges-for-console-and-mobile-games/
 https://mcvuk.com/development-news/audio-loudness-for-gaming-the-battle-against-ear-fatigue/
 https://www.stephenschappler.com/2013/07/26/listening-for-loudness-in-video-games/
+
 
 
